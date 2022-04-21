@@ -1,4 +1,7 @@
 ﻿namespace NasaApi.Models
+
+    // TODO: cada clase en un .cs diferente
+
 {
     public class Estimated_Diameter
     {

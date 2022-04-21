@@ -1,4 +1,8 @@
 ﻿namespace NasaApi.Models
+
+    // TODO: cada clase en un .cs
+    // TODO: no dejes comentarios
+
 {
     public class Close_Approach_Data
     {

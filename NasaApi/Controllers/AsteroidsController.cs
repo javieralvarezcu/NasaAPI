@@ -29,7 +29,13 @@ namespace NasaApi.Controllers
             {
                 //var response = await Task.Run(() => _earthObjectService.GetAllNeosAsync(days));
                 var response = await _earthObjectService.GetAllNeosAsync(days);
-                return Ok(response);
+                if (response.Any())
+                {
+                    return Ok(response);
+                } else
+                {
+                    return StatusCode(204);
+                }
             }
         }
 
