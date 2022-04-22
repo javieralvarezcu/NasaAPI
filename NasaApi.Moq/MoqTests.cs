@@ -13,6 +13,7 @@ using System.Net;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Moq.Protected;
+using NasaApi.Models.Raw;
 
 namespace NasaApi.Moq
 {
