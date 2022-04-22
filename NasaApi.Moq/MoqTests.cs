@@ -1,6 +1,6 @@
 using Moq;
-using NasaApi.Models;
-using NasaApi.Services;
+using NasaApi.Library.Models;
+using NasaApi.Library.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -13,7 +13,8 @@ using System.Net;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Moq.Protected;
-using NasaApi.Models.Raw;
+using NasaApi.Library.Models.Raw;
+using NasaApi.Library.Models.Raw.Diameter;
 
 namespace NasaApi.Moq
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace NasaApi.Settings
+namespace NasaApi.Library.Settings
 {
     public class NasaSettings : IOptions<NasaSettings>
     {

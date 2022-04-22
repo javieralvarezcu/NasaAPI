@@ -1,5 +1,9 @@
-using NasaApi.Services;
-using NasaApi.Settings;
+using NasaApi.Library.DataAccess;
+using NasaApi.Library.Settings;
+using NasaApi.Library;
+using NasaApi;
+using MediatR;
+using NasaApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<INearEarthObjectService, NearEarthObjectService>();
+builder.Services.AddMediatR(typeof(LibraryMediatREntrypoint).Assembly);
+builder.Services.AddMediatR(typeof(AsteroidsController).Assembly);
 
 var app = builder.Build();
 

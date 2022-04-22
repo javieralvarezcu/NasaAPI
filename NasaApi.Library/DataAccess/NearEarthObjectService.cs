@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
-using NasaApi.Models;
-using NasaApi.Models.Raw;
-using NasaApi.Settings;
+using NasaApi.Library.Models;
+using NasaApi.Library.Models.Raw;
+using NasaApi.Library.Settings;
+using System.Net.Http.Json;
 
-namespace NasaApi.Services
+namespace NasaApi.Library.DataAccess
 {
     public class NearEarthObjectService : INearEarthObjectService
     {
@@ -16,7 +17,7 @@ namespace NasaApi.Services
             _nasaSettings = nasaSettings.Value;
         }
 
-        public async Task<IEnumerable<NearEarthObjectDTO>> GetAllNeosAsync(int days)
+        public async Task<List<NearEarthObjectDTO>> GetAllNeosAsync(int days)
         {
             //Variable declaration
             List<NearEarthObjectDTO> list = new List<NearEarthObjectDTO>();
