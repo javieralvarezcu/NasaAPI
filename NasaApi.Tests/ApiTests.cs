@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using NasaApi.Models;
+using NasaApi.Models.DTO;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Net;

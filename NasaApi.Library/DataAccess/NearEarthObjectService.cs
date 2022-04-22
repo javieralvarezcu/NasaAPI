@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
-using NasaApi.Library.Models;
-using NasaApi.Library.Models.Raw;
+using NasaApi.Models.DTO;
+using NasaApi.Models.Raw;
 using NasaApi.Library.Settings;
 using System.Net.Http.Json;
 
@@ -56,7 +56,13 @@ namespace NasaApi.Library.DataAccess
             return list.OrderByDescending(x => x.Diametro).Take(3).ToList();
         }
 
-        private string Connection_String_Generator(int days)
+        public async Task<List<NearEarthObjectDTO>> PostTop3HazardousNeosAsync(int days)
+        {
+            List<NearEarthObjectDTO> top3 = new List<NearEarthObjectDTO>();
+            return top3;
+        }
+
+            private string Connection_String_Generator(int days)
         {
             DateTime today = DateTime.Now;
             DateTime nextday = today.AddDays(days);

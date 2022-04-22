@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NasaApi.Tests", "NasaApi.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NasaApi.Moq", "NasaApi.Moq\NasaApi.Moq.csproj", "{F86D8506-BEE8-42B4-A3E3-B75D4E75D0AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaApi.Library", "NasaApi.Library\NasaApi.Library.csproj", "{5B3D2C64-EEBA-43B1-9D07-782BBBE6BDCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NasaApi.Library", "NasaApi.Library\NasaApi.Library.csproj", "{5B3D2C64-EEBA-43B1-9D07-782BBBE6BDCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NasaApi.Persistence", "NasaApi.Persistence\NasaApi.Persistence.csproj", "{99D401CA-EEB2-4D8F-A1EA-5787568D253D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaApi.Models", "NasaApi.Models\NasaApi.Models.csproj", "{71B08B6D-3A35-409C-AC0A-2BC3F0179E88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{5B3D2C64-EEBA-43B1-9D07-782BBBE6BDCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B3D2C64-EEBA-43B1-9D07-782BBBE6BDCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B3D2C64-EEBA-43B1-9D07-782BBBE6BDCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D401CA-EEB2-4D8F-A1EA-5787568D253D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D401CA-EEB2-4D8F-A1EA-5787568D253D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D401CA-EEB2-4D8F-A1EA-5787568D253D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D401CA-EEB2-4D8F-A1EA-5787568D253D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B08B6D-3A35-409C-AC0A-2BC3F0179E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B08B6D-3A35-409C-AC0A-2BC3F0179E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B08B6D-3A35-409C-AC0A-2BC3F0179E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B08B6D-3A35-409C-AC0A-2BC3F0179E88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

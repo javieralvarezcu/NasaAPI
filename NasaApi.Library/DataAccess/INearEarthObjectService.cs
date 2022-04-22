@@ -1,4 +1,4 @@
-﻿using NasaApi.Library.Models;
+﻿using NasaApi.Models.DTO;
 
 namespace NasaApi.Library.DataAccess
 {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using NasaApi.Library.Models;
+using NasaApi.Models.DTO;
 
 namespace NasaApi.Library.Queries
 {
-    public record GetNeosListQuery(int Id) : IRequest<List<NearEarthObjectDTO>>;
+    public record GetNeosListQuery(int Days) : IRequest<List<NearEarthObjectDTO>>;
 }

@@ -1,16 +1,16 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace NasaApi.Library.Models
+namespace NasaApi.Models.DTO
 {
     public class NearEarthObjectDTO
     {
         [JsonIgnore]
         public string Id { get; set; }
-        public string Nombre { get; set; }
-        public float Diametro { get; set; }
-        public string Velocidad { get; set; }
-        public string Fecha { get; set; }
-        public string Planeta { get; set; }
+        public string? Nombre { get; set; }
+        public float? Diametro { get; set; }
+        public string? Velocidad { get; set; }
+        public string? Fecha { get; set; }
+        public string? Planeta { get; set; }
 
         public override bool Equals(object? obj)
         {
