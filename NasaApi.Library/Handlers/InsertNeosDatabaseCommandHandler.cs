@@ -17,11 +17,18 @@ namespace NasaApi.Library.Handlers
         public async Task<List<NearEarthObjectDTO>> Handle(InsertNeosDatabaseCommand request, CancellationToken cancellationToken)
         {
             var top3 = request.Top3;
-            foreach (var neo in top3)
+            try
             {
-                _context.near_earth_objects.Add(neo);
+                foreach (var neo in top3)
+                {
+                    if (!_context.near_earth_objects.Contains(neo))
+                    {
+                        _context.near_earth_objects.Add(neo);
+                    }
+                }
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
+            catch { }
             return await Task.FromResult(top3);
         }
     }

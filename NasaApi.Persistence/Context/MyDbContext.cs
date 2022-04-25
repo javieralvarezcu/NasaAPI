@@ -10,7 +10,7 @@ namespace NasaApi.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+
         }
 
         public DbSet<NearEarthObjectDTO> near_earth_objects { get; set; }

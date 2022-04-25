@@ -57,7 +57,7 @@ namespace NasaApi.Tests
         {
             var feed = await httpClient.GetFromJsonAsync<List<NearEarthObjectDTO>>($"/asteroids?days={value}");
 
-            Assert.IsTrue(feed.Count <= 3 && feed.Count>=0);
+            Assert.IsTrue(feed.Count <= 3 && feed.Count >= 0);
         }
 
 

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using NasaApi.Library.DataAccess;
-using NasaApi.Models.DTO;
 using NasaApi.Library.Queries;
+using NasaApi.Models.DTO;
 
 namespace NasaApi.Library.Handlers
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
+using NasaApi.Library.Settings;
 using NasaApi.Models.DTO;
 using NasaApi.Models.Raw;
-using NasaApi.Library.Settings;
 using System.Net.Http.Json;
 
 namespace NasaApi.Library.DataAccess
@@ -10,7 +10,7 @@ namespace NasaApi.Library.DataAccess
     {
         private readonly HttpClient _httpClient;
         private readonly NasaSettings _nasaSettings;
-        
+
         public NearEarthObjectService(HttpClient httpClient, IOptions<NasaSettings> nasaSettings)
         {
             _httpClient = httpClient;
@@ -21,9 +21,9 @@ namespace NasaApi.Library.DataAccess
         {
             //Variable declaration
             List<NearEarthObjectDTO> list = new List<NearEarthObjectDTO>();
-                        
+
             _httpClient.BaseAddress = new Uri(_nasaSettings.BaseUrl);
-            var feed = await _httpClient.GetFromJsonAsync<Rootobject>(Connection_String_Generator(days));            
+            var feed = await _httpClient.GetFromJsonAsync<Rootobject>(Connection_String_Generator(days));
 
             var allAsteroids = feed?.near_earth_objects.SelectMany(s => s.Value).ToList();
 
@@ -39,8 +39,8 @@ namespace NasaApi.Library.DataAccess
                             Nombre = asteroid.name,
                             Fecha = item.close_approach_date,
                             Velocidad = item.relative_velocity.kilometers_per_hour,
-                            Diametro = (asteroid.estimated_diameter.meters.estimated_diameter_min+
-                            asteroid.estimated_diameter.meters.estimated_diameter_min)/2,
+                            Diametro = (asteroid.estimated_diameter.meters.estimated_diameter_min +
+                            asteroid.estimated_diameter.meters.estimated_diameter_min) / 2,
                             Planeta = item.orbiting_body
                         };
 
@@ -62,13 +62,13 @@ namespace NasaApi.Library.DataAccess
             return top3;
         }
 
-            private string Connection_String_Generator(int days)
+        private string Connection_String_Generator(int days)
         {
             DateTime today = DateTime.Now;
             DateTime nextday = today.AddDays(days);
 
             //URL parsing & data request
-            
+
             return $"feed?start_date={today.Date:yyyy-MM-dd}" +
                 $"&end_date={nextday.Date:yyyy-MM-dd}" +
                 $"&detailed=false&api_key={_nasaSettings.ApiKey}";

@@ -1,11 +1,10 @@
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using NasaApi.Controllers;
+using NasaApi.Library;
 using NasaApi.Library.DataAccess;
 using NasaApi.Library.Settings;
-using NasaApi.Library;
 using NasaApi.Persistence.Context;
-using MediatR;
-using NasaApi.Controllers;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
