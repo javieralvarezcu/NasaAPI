@@ -28,7 +28,7 @@ namespace NasaApi.Library.Handlers
                 }
                 await _context.SaveChangesAsync();
             }
-            catch { }
+            catch(Exception e) { }
             return await Task.FromResult(top3);
         }
     }

@@ -31,22 +31,25 @@ namespace NasaApi.Library.DataAccess
             {
                 foreach (var asteroid in allAsteroids)
                 {
-                    foreach (var item in asteroid.close_approach_data)
+                    if (asteroid !=null)
                     {
-                        var neo = new NearEarthObjectDTO
+                        foreach (var item in asteroid.close_approach_data)
                         {
-                            Id = asteroid.id,
-                            Nombre = asteroid.name,
-                            Fecha = item.close_approach_date,
-                            Velocidad = item.relative_velocity.kilometers_per_hour,
-                            Diametro = (asteroid.estimated_diameter.meters.estimated_diameter_min +
-                            asteroid.estimated_diameter.meters.estimated_diameter_min) / 2,
-                            Planeta = item.orbiting_body
-                        };
+                            var neo = new NearEarthObjectDTO
+                            {
+                                Id = asteroid.id,
+                                Nombre = asteroid.name,
+                                Fecha = item.close_approach_date,
+                                Velocidad = item.relative_velocity.kilometers_per_hour,
+                                Diametro = (asteroid.estimated_diameter.meters.estimated_diameter_min +
+                                asteroid.estimated_diameter.meters.estimated_diameter_min) / 2,
+                                Planeta = item.orbiting_body
+                            };
 
-                        if (asteroid.is_potentially_hazardous_asteroid && neo.Planeta.Equals("Earth") && !list.Contains(neo))
-                        {
-                            list.Add(neo);
+                            if (asteroid.is_potentially_hazardous_asteroid && neo.Planeta.Equals("Earth") && !list.Contains(neo))
+                            {
+                                list.Add(neo);
+                            }
                         }
                     }
                 }
