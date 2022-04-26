@@ -21,9 +21,11 @@ namespace NasaApi.Library.DataAccess
         {
             //Variable declaration
             List<NearEarthObjectDTO> list = new List<NearEarthObjectDTO>();
+            Rootobject feed = new Rootobject();
 
             _httpClient.BaseAddress = new Uri(_nasaSettings.BaseUrl);
-            var feed = await _httpClient.GetFromJsonAsync<Rootobject>(Connection_String_Generator(days));
+
+                feed = await _httpClient.GetFromJsonAsync<Rootobject>(Connection_String_Generator(days));
 
             var allAsteroids = feed?.near_earth_objects.SelectMany(s => s.Value).ToList();
 

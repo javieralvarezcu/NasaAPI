@@ -52,7 +52,7 @@ namespace NasaApi.Controllers
 
         // POST: asteroids?days=[days]
         [HttpPost]
-        public async Task<ActionResult<List<NearEarthObjectDTO>>> PostTop3HazardousNeos(int days)
+        public async Task<IActionResult> PostTop3HazardousNeos(int days)
         {
             List<NearEarthObjectDTO> response = new List<NearEarthObjectDTO>();
             if (days < 1 || days > 7)

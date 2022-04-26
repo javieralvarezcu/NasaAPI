@@ -51,6 +51,7 @@ namespace NasaApi.Moq.ServicesTests
         {
             _newEarthObjectsService = new NearEarthObjectService(
                 MockHttpMessageHandlerGenerator(HttpFeedGenerator(days,neosPerDay)), _mockNasaSettings.Object);
+
             var result = await _newEarthObjectsService.GetAllNeosAsync(6);
 
             var neos = Assert.IsType<List<NearEarthObjectDTO>>(result);
