@@ -6,9 +6,6 @@ using NasaApi.Controllers;
 using NasaApi.Library.Queries;
 using NasaApi.Moq.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -33,9 +30,9 @@ namespace NasaApi.Moq.ControllersTests
         [InlineData(3)]
         public async Task GetOkHttpResponse(int days)
         {
-                _mockMediator
-                .Setup(m => m.Send(It.IsAny<GetTransactionsQuery>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(ReadSamplePaypalJson.ReadFormatJson("paypal_ok_response.json"));
+            _mockMediator
+            .Setup(m => m.Send(It.IsAny<GetTransactionsQuery>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ReadSamplePaypalJson.ReadFormatJson("paypal_ok_response.json"));
 
             _controller = new PaypalController(_mockMediator.Object);
 

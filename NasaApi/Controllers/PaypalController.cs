@@ -28,7 +28,7 @@ namespace NasaApi.Controllers
                 Response.Headers.Add("Error", "La primera fecha debe ser menor a la segunda");
                 return BadRequest();
             }
-            else if(end_date.Subtract(start_date).Days > 31)
+            else if (end_date.Subtract(start_date).Days > 31)
             {
                 Response.Headers.Add("Error", "El rango de fechas no puede ser mayor de 31 dias");
                 return BadRequest();

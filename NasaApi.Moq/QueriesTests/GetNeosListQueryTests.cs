@@ -1,13 +1,13 @@
 ﻿using Moq;
 using NasaApi.Library.DataAccess;
-using NasaApi.Library.Queries;
 using NasaApi.Library.Handlers;
+using NasaApi.Library.Queries;
+using NasaApi.Models.DTO;
+using NasaApi.Moq.Mocks;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using System.Threading;
-using NasaApi.Models.DTO;
-using System.Collections.Generic;
-using NasaApi.Moq.Mocks;
 
 namespace NasaApi.Moq.QueriesTests
 {

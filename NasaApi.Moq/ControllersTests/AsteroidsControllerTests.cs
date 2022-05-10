@@ -36,7 +36,7 @@ namespace NasaApi.Moq.ControllersTests
 
             _controller = new AsteroidsController(_mockMediator.Object);
 
-            var result = await _controller.Get(new Random().Next(6)+1);
+            var result = await _controller.Get(new Random().Next(6) + 1);
 
             var okResult = result as StatusCodeResult;
 

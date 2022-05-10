@@ -4,12 +4,8 @@ using Moq;
 using Moq.Protected;
 using NasaApi.Library.DataAccess;
 using NasaApi.Library.Settings;
-using NasaApi.Models.DTO;
-using NasaApi.Models.Raw;
 using NasaApi.Moq.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -52,7 +48,7 @@ namespace NasaApi.Moq.ServicesTests
             _newPaypalService = new PaypalService(
                 MockHttpMessageHandlerGenerator(filename), _mockPaypalSettings.Object);
 
-            var result = await _newPaypalService.GetTransactionsByDate(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddDays(new Random().Next(30)+1));
+            var result = await _newPaypalService.GetTransactionsByDate(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddDays(new Random().Next(30) + 1));
             var responseJson = Assert.IsType<string>(result);
 
             Assert.Equal(ReadSamplePaypalJson.ReadFormatJson(filename), responseJson);

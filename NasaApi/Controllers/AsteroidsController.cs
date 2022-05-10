@@ -34,7 +34,8 @@ namespace NasaApi.Controllers
                 {
                     response = await _mediator.Send(new GetNeosListQuery(days));
                 }
-                catch (Exception){
+                catch (Exception)
+                {
                     Response.Headers.Add("Error", "Fallo al recibir datos de la NASA");
                     return StatusCode(500);
                 }
@@ -66,12 +67,12 @@ namespace NasaApi.Controllers
                 {
                     response = await _mediator.Send(new GetNeosListQuery(days));
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     Response.Headers.Add("Error", "Fallo al recibir datos de la NASA");
                     return StatusCode(500);
                 }
-                
+
                 if (response.Any())
                 {
                     try

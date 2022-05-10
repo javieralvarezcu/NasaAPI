@@ -1,9 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NasaApi.Library.Settings
 {
@@ -14,7 +9,7 @@ namespace NasaApi.Library.Settings
         public string? AuthUrl { get; set; }
         public string? ClientId { get; set; }
         public string? ClientSecret { get; set; }
-        
+
         public PaypalSettings Value => this;
     }
 }

@@ -40,7 +40,7 @@ namespace NasaApi.Moq.ServicesTests
                 ApiKey = config.GetSection(nameof(NasaSettings)).GetValue<string>("ApiKey")
             });
 
-            
+
         }
 
         [Theory]
@@ -50,7 +50,7 @@ namespace NasaApi.Moq.ServicesTests
         public async Task Successful_Service_Count_Test(int days, int neosPerDay)
         {
             _newEarthObjectsService = new NearEarthObjectService(
-                MockHttpMessageHandlerGenerator(HttpFeedGenerator(days,neosPerDay)), _mockNasaSettings.Object);
+                MockHttpMessageHandlerGenerator(HttpFeedGenerator(days, neosPerDay)), _mockNasaSettings.Object);
 
             var result = await _newEarthObjectsService.GetAllNeosAsync(6);
 
@@ -76,7 +76,7 @@ namespace NasaApi.Moq.ServicesTests
 
             foreach (var neo in neos)
             {
-                if(neo.Id == id)
+                if (neo.Id == id)
                 {
                     Assert.Equal(name, neo.Nombre);
                 }
@@ -90,18 +90,18 @@ namespace NasaApi.Moq.ServicesTests
             Dictionary<string, Near_Earth_Objects[]> observation = new Dictionary<string, Near_Earth_Objects[]>();
             RandomRawNeoGenerator randomRawNeo;
 
-                Near_Earth_Objects[] observationArray = new Near_Earth_Objects[1];
-                DateTime dateTime = DateTime.Now;
+            Near_Earth_Objects[] observationArray = new Near_Earth_Objects[1];
+            DateTime dateTime = DateTime.Now;
 
-                    randomRawNeo = new RandomRawNeoGenerator()
-                    {
-                        NeoDate = dateTime,
-                        Hazardous = true
-                    };
+            randomRawNeo = new RandomRawNeoGenerator()
+            {
+                NeoDate = dateTime,
+                Hazardous = true
+            };
 
-                    observationArray[0] = randomRawNeo.Observation;
-                    observationArray[0].id = id;
-                    observationArray[0].name = name;
+            observationArray[0] = randomRawNeo.Observation;
+            observationArray[0].id = id;
+            observationArray[0].name = name;
 
 
             observation.Add(dateTime.ToString("yyyy-MM-dd"), observationArray);
@@ -152,6 +152,6 @@ namespace NasaApi.Moq.ServicesTests
             return httpClientDouble;
         }
     }
-    
+
 
 }

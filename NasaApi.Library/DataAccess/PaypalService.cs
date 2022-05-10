@@ -1,11 +1,10 @@
-﻿
-using System.Net.Http.Headers;
-using System.Text;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using NasaApi.Library.Settings;
 using NasaApi.Models.Auth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace NasaApi.Library.DataAccess
 {
@@ -30,16 +29,12 @@ namespace NasaApi.Library.DataAccess
             .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _httpClient.DefaultRequestHeaders.Add("Authorization", TokenGenerator().Result);
 
-            string jsonFormatted="";
-
             var stringTask = _httpClient.GetStringAsync(
                 _paypalSettings.TransactionsUrl +
                 $"start_date={start_date.ToString("yyyy-MM-ddThh:mm:sszzz").Replace("+", "%2B")}&" +
                 $"end_date={end_date.ToString("yyyy-MM-ddThh:mm:sszzz").Replace("+", "%2B")}");
 
-            jsonFormatted = JValue.Parse(stringTask.Result).ToString(Formatting.Indented);
-
-            return jsonFormatted;
+            return JValue.Parse(stringTask.Result).ToString(Formatting.Indented);
         }
 
         private async Task<string> TokenGenerator()
@@ -64,7 +59,7 @@ namespace NasaApi.Library.DataAccess
             return bearerToken;
         }
 
-        
+
 
     }
 }

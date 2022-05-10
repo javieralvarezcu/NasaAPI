@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NasaApi.Persistence.Context;
 using System;
-using System.Threading.Tasks;
 
 namespace NasaApi.Moq.Mocks
 {

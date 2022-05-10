@@ -33,7 +33,7 @@ namespace NasaApi.Library.DataAccess
             {
                 foreach (var asteroid in allAsteroids)
                 {
-                    if (asteroid !=null)
+                    if (asteroid != null)
                     {
                         foreach (var item in asteroid.close_approach_data)
                         {
