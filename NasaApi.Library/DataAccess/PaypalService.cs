@@ -33,7 +33,7 @@ namespace NasaApi.Library.DataAccess
             string jsonFormatted="";
 
             var stringTask = _httpClient.GetStringAsync(
-                $"/v1/reporting/transactions?" +
+                _paypalSettings.TransactionsUrl +
                 $"start_date={start_date.ToString("yyyy-MM-ddThh:mm:sszzz").Replace("+", "%2B")}&" +
                 $"end_date={end_date.ToString("yyyy-MM-ddThh:mm:sszzz").Replace("+", "%2B")}");
 
@@ -52,7 +52,7 @@ namespace NasaApi.Library.DataAccess
 
             var dict = new Dictionary<string, string>();
             dict.Add("grant_type", "client_credentials");
-            var req = new HttpRequestMessage(HttpMethod.Post, new Uri(_paypalSettings.AuthUrl)) { Content = new FormUrlEncodedContent(dict) };
+            var req = new HttpRequestMessage(HttpMethod.Post, new Uri($"{_paypalSettings.BaseUrl}{_paypalSettings.AuthUrl}")) { Content = new FormUrlEncodedContent(dict) };
             var response = _httpClient.SendAsync(req);
             var finalData = await response.Result.Content.ReadAsStringAsync();
 

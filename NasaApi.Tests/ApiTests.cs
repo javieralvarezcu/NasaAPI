@@ -29,7 +29,7 @@ namespace NasaApi.Tests
         [TestCase(1)]
         [TestCase(3)]
         [TestCase(7)]
-        public async Task Successful_Status_Code_Test(int value, HttpClient? httpClient)
+        public async Task Successful_Status_Code_Test(int value)
         {
             HttpResponseMessage? response = await httpClient.GetAsync($"/asteroids?days={value}");
 
