@@ -72,7 +72,7 @@ namespace NasaApi.Moq.ServicesTests
 
             var neos = Assert.IsType<List<NearEarthObjectDTO>>(result);
 
-            Assert.True(neos.Contains(new NearEarthObjectDTO { Id = id }));
+            Assert.Contains(new NearEarthObjectDTO { Id = id }, neos);
 
             foreach (var neo in neos)
             {

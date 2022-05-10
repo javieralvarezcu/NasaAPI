@@ -34,7 +34,7 @@ namespace NasaApi.Controllers
                 {
                     response = await _mediator.Send(new GetNeosListQuery(days));
                 }
-                catch (Exception e){
+                catch (Exception){
                     Response.Headers.Add("Error", "Fallo al recibir datos de la NASA");
                     return StatusCode(500);
                 }
@@ -66,7 +66,7 @@ namespace NasaApi.Controllers
                 {
                     response = await _mediator.Send(new GetNeosListQuery(days));
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     Response.Headers.Add("Error", "Fallo al recibir datos de la NASA");
                     return StatusCode(500);
@@ -80,7 +80,7 @@ namespace NasaApi.Controllers
                         Response.Headers.Add("Success", "Insertados registros no duplicados en la base de datos");
                         return Ok(response);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         Response.Headers.Add("Error", "Fallo al insertar en la base de datos");
                         return StatusCode(500);

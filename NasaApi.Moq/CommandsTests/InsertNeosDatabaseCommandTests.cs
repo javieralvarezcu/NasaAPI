@@ -19,7 +19,7 @@ namespace NasaApi.Moq.CommandsTests
 
         public InsertNeosDatabaseCommandTests()
         {
-            _mockContext = MockNeoContext.GetNeoContext().Result;
+            _mockContext = MockNeoContext.GetNeoContext();
         }
 
         [Theory]
@@ -42,7 +42,7 @@ namespace NasaApi.Moq.CommandsTests
             {
                 foreach (var outputNeo in result)
                 {
-                    Assert.True(neos.Contains(outputNeo));
+                    Assert.Contains(outputNeo, neos);
                 }
             }
         }

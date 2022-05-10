@@ -11,8 +11,8 @@ namespace NasaApi.Tests
 {
     public class ApiTests
     {
-        private WebApplicationFactory<Program> webAppFactory;
-        private HttpClient httpClient;
+        private WebApplicationFactory<Program>? webAppFactory;
+        private HttpClient? httpClient;
 
         [SetUp]
         public void Setup()
@@ -21,12 +21,17 @@ namespace NasaApi.Tests
             httpClient = webAppFactory.CreateDefaultClient();
         }
 
+        public HttpClient? GetHttpClient()
+        {
+            return httpClient;
+        }
+
         [TestCase(1)]
         [TestCase(3)]
         [TestCase(7)]
-        public async Task Successful_Status_Code_Test(int value)
+        public async Task Successful_Status_Code_Test(int value, HttpClient? httpClient)
         {
-            var response = await httpClient.GetAsync($"/asteroids?days={value}");
+            HttpResponseMessage? response = await httpClient.GetAsync($"/asteroids?days={value}");
 
             Assert.IsTrue(response.IsSuccessStatusCode);
         }

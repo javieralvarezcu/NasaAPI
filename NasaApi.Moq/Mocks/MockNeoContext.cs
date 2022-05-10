@@ -7,7 +7,7 @@ namespace NasaApi.Moq.Mocks
 {
     public class MockNeoContext
     {
-        public async static Task<MyDbContext> GetNeoContext()
+        public static MyDbContext GetNeoContext()
         {
             var options = new DbContextOptionsBuilder<MyDbContext>()
                     .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())

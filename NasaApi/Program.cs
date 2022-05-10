@@ -12,12 +12,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // TODO: configuración
 builder.Services.Configure<NasaSettings>(builder.Configuration.GetSection(nameof(NasaSettings)));
+builder.Services.Configure<PaypalSettings>(builder.Configuration.GetSection(nameof(PaypalSettings)));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<INearEarthObjectService, NearEarthObjectService>();
+builder.Services.AddScoped<IPaypalService, PaypalService>();
 builder.Services.AddMediatR(typeof(LibraryMediatREntrypoint).Assembly);
 builder.Services.AddMediatR(typeof(AsteroidsController).Assembly);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection"); ;
@@ -34,10 +36,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
+using (var serviceScope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope())
 {
-    var context = serviceScope.ServiceProvider.GetRequiredService<MyDbContext>();
-    context.Database.Migrate();
+    var context = serviceScope?.ServiceProvider.GetRequiredService<MyDbContext>();
+    context?.Database.Migrate();
 }
 
 app.UseHttpsRedirection();

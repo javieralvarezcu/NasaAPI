@@ -41,7 +41,7 @@ namespace NasaApi.Moq.ControllersTests
             var okResult = result as StatusCodeResult;
 
             Assert.NotNull(okResult);
-            Assert.Equal(204, okResult.StatusCode);
+            Assert.Equal(204, okResult?.StatusCode);
         }
 
         [Theory]
@@ -61,7 +61,7 @@ namespace NasaApi.Moq.ControllersTests
             var okResult = result as OkObjectResult;
 
             Assert.NotNull(okResult);
-            Assert.Equal(200, okResult.StatusCode);
+            Assert.Equal(200, okResult?.StatusCode);
         }
 
         [Theory]
@@ -82,7 +82,7 @@ namespace NasaApi.Moq.ControllersTests
             var badResult = result as BadRequestResult;
 
             Assert.NotNull(badResult);
-            Assert.Equal(400, badResult.StatusCode);
+            Assert.Equal(400, badResult?.StatusCode);
         }
 
         [Theory]
@@ -101,11 +101,11 @@ namespace NasaApi.Moq.ControllersTests
 
             var okResult = result as OkObjectResult;
 
-            var neos = okResult.Value as List<NearEarthObjectDTO>;
+            var neos = okResult?.Value as List<NearEarthObjectDTO>;
 
             Assert.NotNull(okResult);
             Assert.NotNull(neos);
-            Assert.Equal(number, neos.Count);
+            Assert.Equal(number, neos?.Count);
         }
 
         [Theory]
@@ -123,7 +123,7 @@ namespace NasaApi.Moq.ControllersTests
             var okResult = result as StatusCodeResult;
 
             Assert.NotNull(okResult);
-            Assert.Equal(204, okResult.StatusCode);
+            Assert.Equal(204, okResult?.StatusCode);
         }
 
         [Theory]
@@ -144,7 +144,7 @@ namespace NasaApi.Moq.ControllersTests
             var okResult = result as OkObjectResult;
 
             Assert.NotNull(okResult);
-            Assert.Equal(200, okResult.StatusCode);
+            Assert.Equal(200, okResult?.StatusCode);
         }
 
         [Theory]
@@ -165,7 +165,7 @@ namespace NasaApi.Moq.ControllersTests
             var badResult = result as BadRequestResult;
 
             Assert.NotNull(badResult);
-            Assert.Equal(400, badResult.StatusCode);
+            Assert.Equal(400, badResult?.StatusCode);
         }
 
         [Theory]
@@ -185,11 +185,11 @@ namespace NasaApi.Moq.ControllersTests
 
             var okResult = result as OkObjectResult;
 
-            var neos = okResult.Value as List<NearEarthObjectDTO>;
+            var neos = okResult?.Value as List<NearEarthObjectDTO>;
 
             Assert.NotNull(okResult);
             Assert.NotNull(neos);
-            Assert.Equal(number, neos.Count);
+            Assert.Equal(number, neos?.Count);
         }
     }
 }
