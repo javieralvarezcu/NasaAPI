@@ -45,14 +45,18 @@ namespace NasaApi.Library.DataAccess
             var byteArray = Encoding.ASCII.GetBytes($"{_paypalSettings.ClientId}:{_paypalSettings.ClientSecret}");
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-            var dict = new Dictionary<string, string>();
-            dict.Add("grant_type", "client_credentials");
-            var req = new HttpRequestMessage(HttpMethod.Post, new Uri($"{_paypalSettings.BaseUrl}{_paypalSettings.AuthUrl}")) { Content = new FormUrlEncodedContent(dict) };
-            var response = _httpClient.SendAsync(req);
-            var finalData = await response.Result.Content.ReadAsStringAsync();
+            var dict = new Dictionary<string, string>
+            {
+                { "grant_type", "client_credentials" }
+            };
+            var content = new FormUrlEncodedContent(dict);
+            var req = new HttpRequestMessage(HttpMethod.Post, new Uri($"{_paypalSettings.BaseUrl}{_paypalSettings.AuthUrl}")) { Content = content };
+            var response = _httpClient.SendAsync(req);            
 
-            PaypalToken? paypalToken = JsonConvert.DeserializeObject<PaypalToken>(finalData);
-            string bearerToken = $"{paypalToken.token_type} {paypalToken.access_token}";
+            var finalData = await response.Result.Content.ReadAsStringAsync();
+            var paypalToken = JsonConvert.DeserializeObject<PaypalToken>(finalData);
+            
+            string bearerToken = $"{paypalToken?.token_type} {paypalToken?.access_token}";
 
             _httpClient.DefaultRequestHeaders.Clear();
 

@@ -13,7 +13,12 @@ namespace NasaApi.Moq.QueriesTests
 {
     public class GetNeosListQueryTests
     {
+        // TODO: No necesitas esta propiedad aquí, úsala sólo en el método test y la declaras en él
+        // si tuvieras más de un test, puedes usar el constructor de la clase
+        // aunque como tienes esto hecho, no tiene mucho sentido. 
+
         private Mock<INearEarthObjectService> _mockRepo;
+        
 
         [Theory]
         [InlineData(1)]
@@ -21,6 +26,7 @@ namespace NasaApi.Moq.QueriesTests
         [InlineData(3)]
         public async Task GetNeosListTest(int number)
         {
+            // TODO: var
             _mockRepo = MockNeoService.GetNeoService(number);
 
 
@@ -36,6 +42,7 @@ namespace NasaApi.Moq.QueriesTests
             {
                 foreach (var outputNeo in result)
                 {
+                    // TODO: Assert.Contains(outputNeo, neos);
                     Assert.True(neos.Contains(outputNeo));
                 }
             }

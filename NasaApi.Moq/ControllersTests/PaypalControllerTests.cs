@@ -16,12 +16,20 @@ namespace NasaApi.Moq.ControllersTests
     {
         private Mock<IMediator> _mockMediator;
         private DefaultHttpContext _httpContext;
+
+        // TODO: Hay un paquete nugget: Xunit.DependencyInjection que si creas una clase startup.cs te hace magia y no necesitas inicializar las instancias en el constructor como lo estás haciendo
+
+        // TODO: esta propiedad aquí no tiene sentido.
+        // Como depende de lo que moqueas en cada método, declarala y úsala en cada método.
+        // Una propiedad con ámbito para toda la clase tiene sentido si se le da valor en el constructor y se usa indistintamente en los diferentes métodos (como _httpContext)
+        // si no, no tiene sentido.
         private PaypalController _controller;
+        
         public PaypalControllerTests()
         {
             _mockMediator = new Mock<IMediator>();
 
-            _httpContext = new DefaultHttpContext();
+            _httpContext = new DefaultHttpContext();            
         }
 
         [Theory]
@@ -34,6 +42,7 @@ namespace NasaApi.Moq.ControllersTests
             .Setup(m => m.Send(It.IsAny<GetTransactionsQuery>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(ReadSamplePaypalJson.ReadFormatJson("paypal_ok_response.json"));
 
+            // TODO: var
             _controller = new PaypalController(_mockMediator.Object);
 
             var result = await _controller.Get(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddDays(days));
@@ -54,6 +63,7 @@ namespace NasaApi.Moq.ControllersTests
                 .Setup(m => m.Send(It.IsAny<GetTransactionsQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(ReadSamplePaypalJson.ReadFormatJson("paypal_ok_response.json"));
 
+            // TODO: var
             _controller = new PaypalController(_mockMediator.Object);
             _controller.ControllerContext.HttpContext = _httpContext;
 
